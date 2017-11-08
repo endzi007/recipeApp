@@ -1,24 +1,35 @@
 import React, { Component } from 'react';
+import { Modal, Button } from 'react-bootstrap';
 
 class AddRecipe extends Component {
+    constructor(){
+      super();
+      this.state = {
+        showModal: false
+      }
+      this.close = this.close.bind(this);
+      this.open = this.open.bind(this);
+    }
+    componentWillReceiveProps(){
+      this.open();
+    }
+    close(){
+      this.setState({showModal: false});
+    }
+    open(){
+      this.setState({showModal: true});
+    }
     render(){
         return (
-        <div id="myModal" className="modal fade" role="dialog">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="close" data-dismiss="modal">&times;</button>
-              <h4 className="modal-title">Modal Header</h4>
-            </div>
-            <div className="modal-body">
-              <p>Some text in the modal.</p>
-            </div>
-            <div className="modal-footer">
-              <button type="button" className="btn btn-default" data-dismiss="modal">Close</button>
-            </div>
-          </div>
-        </div>
-      </div>)
+          <Modal show={this.state.showModal} onHide={this.close}>
+            <Modal.Header>Add new recipe</Modal.Header>
+            <Modal.Body>This is Body</Modal.Body>
+            <Modal.Footer>
+              <Button bsStyle="info">Add</Button>
+              <Button bsStyle="danger" onClick={this.close}>Dissmiss</Button>
+            </Modal.Footer>
+          </Modal>
+        )
     }
 }
 
