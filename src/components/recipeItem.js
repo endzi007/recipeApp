@@ -4,11 +4,12 @@ import { Panel, Button, ButtonToolbar, ListGroupItem, ListGroup } from 'react-bo
 class RecipeItem extends Component {
     render(){
         return (
-        <Panel collapsible header="Panel heading" bsStyle="info">
+        <Panel collapsible header="Panel Heading" bsStyle="info" className="noPadding">
             <ListGroup>
-                <h3>Ingredients</h3>
+                <h3 className="text-center">Ingredients</h3>
                 <ListGroupItem>Item 1</ListGroupItem>
                 <ListGroupItem>Item 2</ListGroupItem>
+                <hr />
                 <ButtonToolbar>         
                 <Button bsStyle="danger">Delete</Button>
                 <Button bsStyle="info">Edit</Button>

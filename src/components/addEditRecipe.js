@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Button } from 'react-bootstrap';
+import AddEditForm from './addEditForm';
 
-class AddRecipe extends Component {
+class AddEditRecipe extends Component {
     constructor(){
       super();
       this.state = {
@@ -23,7 +24,9 @@ class AddRecipe extends Component {
         return (
           <Modal show={this.state.showModal} onHide={this.close}>
             <Modal.Header>Add new recipe</Modal.Header>
-            <Modal.Body>This is Body</Modal.Body>
+            <Modal.Body>
+              <AddEditForm  titleProp="" recipeProp=""/>
+            </Modal.Body>
             <Modal.Footer>
               <Button bsStyle="info">Add</Button>
               <Button bsStyle="danger" onClick={this.close}>Dissmiss</Button>
@@ -33,4 +36,4 @@ class AddRecipe extends Component {
     }
 }
 
-export default AddRecipe;
+export default AddEditRecipe;

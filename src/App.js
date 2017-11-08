@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import AddRecipe from './components/addRecipeModal';
+import AddEditRecipe from './components/addEditRecipe';
 import RecipeList from './components/recipeList.js';
 class App extends Component {
   constructor(){
@@ -17,7 +17,7 @@ class App extends Component {
     return (
       <div className="container">
         <h2>Recipe App - FCC</h2>
-        <AddRecipe showComponent={this.state.showComponent}/>
+        <AddEditRecipe showComponent={this.state.showComponent}/>
         <RecipeList />
         <button type="button" className="btn btn-info btn-lg" onClick={this.handleClick.bind(this)}>Add Recipe</button>
       </div>
