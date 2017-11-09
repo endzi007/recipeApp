@@ -19,7 +19,6 @@ class AddEditForm extends Component {
     }
     getValidationState() {
       const length = this.state.title.length;
-      console.log();
       if (length > 10) return 'success';
       else if (length > 5) return 'warning';
       else if (length > 0) return 'error';
@@ -28,14 +27,16 @@ class AddEditForm extends Component {
   
     handleChange(e) {
       let inputId = e.target.id;
-      if(inputId = "formTitle"){
-        this.setState({ title: e.target.value });
+      if(inputId === "formTitle"){
+        this.setState({ title: e.target.value }, ()=>{
+          this.props.changeStateFromInput(this.state.title, this.state.recipe);
+        });
       } else{
-        this.setState({ recipe: e.target.value });
+        this.setState({ recipe: e.target.value }, ()=>{
+          this.props.changeStateFromInput(this.state.title, this.state.recipe);
+        });
       }
-      
     }
-  
     render() {
       return (
         <form>
@@ -57,7 +58,7 @@ class AddEditForm extends Component {
             <FormControl
               type="text"
               value={this.state.recipe}
-              placeholder="Enter title"
+              placeholder="Enter recipe"
               onChange={this.handleChange}
             />
           </FormGroup>

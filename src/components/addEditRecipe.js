@@ -6,29 +6,47 @@ class AddEditRecipe extends Component {
     constructor(){
       super();
       this.state = {
-        showModal: false
+        recipes: [],
+        title: "",
+        recipe: ""
       }
       this.close = this.close.bind(this);
       this.open = this.open.bind(this);
-    }
-    componentWillReceiveProps(){
-      this.open();
+      this.changeStateFromInput = this.changeStateFromInput.bind(this);
+      this.addRecipe = this.addRecipe.bind(this);
     }
     close(){
-      this.setState({showModal: false});
+      this.props.showComponent(false);
     }
     open(){
-      this.setState({showModal: true});
+      this.props.showComponent(false);
     }
+    changeStateFromInput(title, recipe){
+      this.setState({
+        title: title,
+        recipe: recipe
+      });
+    }
+    addRecipe(){
+      var temp = JSON.parse(localStorage.getItem("recipes")) || [];
+      temp.push({title: this.state.title, recipe: this.state.recipe});
+      this.setState({
+        recipes: temp
+      }, () => {
+        localStorage.setItem("recipes", JSON.stringify(temp));
+        this.props.addItem(temp);
+      });
+    }
+
     render(){
         return (
-          <Modal show={this.state.showModal} onHide={this.close}>
+          <Modal show={this.props.showHide} onHide={this.close}>
             <Modal.Header>Add new recipe</Modal.Header>
             <Modal.Body>
-              <AddEditForm  titleProp="" recipeProp=""/>
+              <AddEditForm  titleProp="" recipeProp="" changeStateFromInput={this.changeStateFromInput.bind(this)}/>
             </Modal.Body>
             <Modal.Footer>
-              <Button bsStyle="info">Add</Button>
+              <Button bsStyle="info" onClick={this.addRecipe}>Add</Button>
               <Button bsStyle="danger" onClick={this.close}>Dissmiss</Button>
             </Modal.Footer>
           </Modal>
