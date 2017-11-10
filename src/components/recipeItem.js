@@ -16,7 +16,7 @@ class RecipeItem extends Component {
     updateItem(e){
         let idProp = this.props.id;
         let index = Number.parseInt(idProp.split("_").pop());
-        this.props.updateItem(index);
+        this.props.setEditElement(index);
     }
     splitRecipe(){
         var recipeString = this.props.recipe;

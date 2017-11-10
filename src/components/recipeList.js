@@ -9,7 +9,16 @@ class RecipeList extends Component {
         for (var key in rec) {
             if (rec.hasOwnProperty(key)) {
                 var element = rec[key];
-                recipeList.push(<RecipeItem key={"recipeItem_"+key} id={"recipeItem_"+key} title={element.title} recipe={element.recipe} removeItem={this.props.removeItem} updateItem ={this.props.updateItem}/>)
+                recipeList.push(
+                <RecipeItem key={"recipeItem_"+key} 
+                id={"recipeItem_"+key} 
+                title={element.title} 
+                recipe={element.recipe} 
+                removeItem={this.props.removeItem} 
+                updateItem ={this.props.updateItem}
+                setEditElement={this.props.setEditElement}
+                />
+                )
             }
         }
         return (
