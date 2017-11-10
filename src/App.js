@@ -3,6 +3,8 @@ import './App.css';
 import AddEditRecipe from './components/addEditRecipe';
 import RecipeList from './components/recipeList.js';
 import EditRecipe from './components/editRecipe';
+import Header from './components/header';
+import _ from 'lodash';
 class App extends Component {
   constructor(){
     super();
@@ -14,13 +16,17 @@ class App extends Component {
         id: "",
         title: "",
         recipe: ""
-      }
+      },
+      display: "",
+      switchView: "",
+      searchString: ""
     }
   }
   componentWillMount(){
     var recipes = JSON.parse(localStorage.getItem("recipes"));
     this.setState({
-      recipes: recipes
+      recipes: recipes,
+      switchView: recipes
     });
   }
   showModalComponent(prop){
@@ -39,6 +45,13 @@ class App extends Component {
     this.setState({
       showAddModal: false,
       recipes: temp
+    }, () => {
+      this.filter(this.state.searchString)
+    });
+  }
+  setView(prop){
+    this.setState({
+      switchView: prop
     });
   }
   setEditElement(id){
@@ -59,16 +72,43 @@ class App extends Component {
   updateItem(prop){
     this.setState({
       "recipes": prop
+    }, ()=>{
+      this.filter(this.state.searchString);
     });
   }
   addItem(prop){
     this.setState({
       "recipes": prop
+    }, () => {
+      this.filter(this.state.searchString)
     });
+  }
+  filter(str){
+    let temp = this.state.recipes;
+    if(str.length === 0){
+      this.setState({
+        switchView: this.state.recipes,
+        searchString: ""
+      })
+    } else {
+      var a = _.filter(temp, function(obj){
+        return obj.title.indexOf(str) !== -1;
+      });
+      this.setState({
+        display: a,
+      }, () => {
+        this.setState({
+          switchView: this.state.display,
+          searchString: str
+        })
+      });
+    }
+    
   }
   render() {
     return (
       <div className="container">
+        <Header filter={this.filter.bind(this)}/>
         <h2>Recipe App - FCC</h2>
         <EditRecipe 
           showComponent={this.showModalComponent.bind(this)} 
@@ -81,7 +121,8 @@ class App extends Component {
         <AddEditRecipe showComponent={this.showModalComponent.bind(this)} addItem={this.addItem.bind(this)} showHide={this.state.showAddModal}/>
         <RecipeList 
           setEditElement = {this.setEditElement.bind(this)}
-          recipes={this.state.recipes} 
+          recipes={this.state.switchView}
+          recipeList = {this.state.recipes}
           removeItem={this.removeItem.bind(this)}  
           updateItem = {this.updateItem.bind(this)}
         />

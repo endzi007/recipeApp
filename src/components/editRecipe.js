@@ -23,7 +23,6 @@ class EditRecipe extends Component {
         });
       }
     }
-
     close(){
       this.props.showComponent(false);
     }
