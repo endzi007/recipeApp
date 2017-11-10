@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Navbar, FormGroup, FormControl, Button } from 'react-bootstrap';
+import { Navbar, FormGroup, FormControl, Button, Nav, NavItem } from 'react-bootstrap';
 class Header extends Component { 
     handleChange(e){
         var val = e.target.value;
@@ -7,23 +7,29 @@ class Header extends Component {
     }
     render(){
         return(
-            <Navbar>
+        <Navbar collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
-                <a href="#" target="_blank">Endzi 007</a>
+                <a href="#">Recipe APP FCC</a>
               </Navbar.Brand>
               <Navbar.Toggle />
             </Navbar.Header>
             <Navbar.Collapse>
-              <Navbar.Form pullLeft>
-                <FormGroup>
-                  <FormControl type="text" placeholder="Search" onChange={this.handleChange.bind(this)}/>
-                </FormGroup>
-                {' '}
-                <Button type="submit" bsStyle="info">Submit</Button>
-              </Navbar.Form>
+                <Nav>
+                <Navbar.Form>
+                    <FormGroup>
+                    <FormControl type="text" placeholder="Search" onChange={this.handleChange.bind(this)}/>
+                    </FormGroup>
+                </Navbar.Form>
+                </Nav>
+                <ul className="nav navbar-nav">
+                    <li><a href="https://github.com/endzi007/recipeApp">Github repository</a></li>
+                    <li><a href="https://linkedin.com/in/enis-jašarović-2b9794132">linkedIn</a></li>
+                </ul>
+               
             </Navbar.Collapse>
-          </Navbar>        );
+        </Navbar>        
+        );
     }  
 }
 
