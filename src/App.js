@@ -25,11 +25,20 @@ class App extends Component {
     }
   }
   componentWillMount(){
-    var recipes = JSON.parse(localStorage.getItem("recipes"));
-    this.setState({
-      recipes: recipes,
-      switchView: recipes
-    });
+
+    let temp = [
+      {title: "Shoyu Chicken", recipe:"1 cup soy sauce, 1 cup brown sugar, 1 cup water, 4 gloves garlic, minced"},
+      {title: "Soba noodle salad", recipe:"2 tablespoons rice vinegar, 1 tablespoon vegetable oil, 1 tablespoon sesame oil, 1 tablespoon brown sugar"},
+      {title: "Italian Chicken Marinade", recipe:"1 (16 ounce) bottle Italian-style salad dressing, 1 teaspoon garlic powder, 1 teaspoon salt, 4 skinless boneless chicken breast halves"},
+      {title: "Shoyu Chicken New Recipe", recipe:"3 cup soy sauce, 7 cup brown sugar, 1 cup water, 4 gloves garlic, minced"},
+      {title: "Soba noodle salad", recipe:"1 cup soy sauce, 1 cup brown sugar, 1 cup water, 4 gloves garlic, minced"},
+    ];
+    var recipes = JSON.parse(localStorage.getItem("recipes")) || temp;
+    localStorage.setItem("recipes", JSON.stringify(recipes));
+      this.setState({
+        recipes: recipes,
+        switchView: recipes
+      });
   }
   showModalComponent(prop){
     this.setState({
