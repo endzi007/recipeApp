@@ -22,10 +22,12 @@ class Header extends Component {
                     </FormGroup>
                 </Navbar.Form>
                 </Nav>
+
                 <ul className="nav navbar-nav">
-                    <li><a href="https://github.com/endzi007/recipeApp">Github repository</a></li>
-                    <li><a href="https://linkedin.com/in/enis-jašarović-2b9794132">linkedIn</a></li>
-                </ul>
+                    <li><a href="https://github.com/endzi007/recipeApp"><i className="fa fa-github fa-lg" aria-hidden="true"></i> Github repository</a></li>
+                    <li><a href="https://linkedin.com/in/enis-jašarović-2b9794132"><i className="fa fa-linkedin fa-lg" aria-hidden="true"></i> linkedIn</a></li>
+                    <li><a href="https://enis-jasarovic.com"><i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i> My Portfolio</a></li>
+                </ul> 
                
             </Navbar.Collapse>
         </Navbar>        

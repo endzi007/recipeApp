@@ -1,3 +1,4 @@
+@import './assets/css/font-awesome.css';
 .custom{
   padding: 10px;
   background: red;
@@ -10,4 +11,10 @@
       cursor: pointer;
     }
   }
+}
+
+i {
+  margin-right: 10px;
+  font-size: 30px;
+  vertical-align: middle;
 }

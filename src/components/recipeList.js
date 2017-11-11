@@ -7,10 +7,11 @@ class RecipeList extends Component {
         var recipeList = [];
         var rec = this.props.recipeList;
         var counter = 0;
+        var recipes = this.props.recipes || [];
         for (var key in rec) {
             if (rec.hasOwnProperty(key)) {
                 var element = rec[key];
-                if(this.props.recipes.indexOf(element)!==-1){
+                if(recipes.indexOf(element)!==-1){
                     recipeList.push(
                         <RecipeItem key={"recipeItem_"+key} 
                         id={"recipeItem_"+key} 
