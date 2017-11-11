@@ -4,6 +4,7 @@ import AddEditRecipe from './components/addEditRecipe';
 import RecipeList from './components/recipeList.js';
 import EditRecipe from './components/editRecipe';
 import Header from './components/header';
+import Footer from './components/footer';
 import { Navbar } from 'react-bootstrap';
 import _ from 'lodash';
 class App extends Component {
@@ -109,7 +110,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Header filter={this.filter.bind(this)}/>
+        <Header filter={this.filter.bind(this)} addRecipe = {this.handleClick.bind(this)}/>
         <EditRecipe 
           showComponent={this.showModalComponent.bind(this)} 
           showHide={this.state.showEditModal}
@@ -126,9 +127,7 @@ class App extends Component {
           removeItem={this.removeItem.bind(this)}  
           updateItem = {this.updateItem.bind(this)}
         />
-        <Navbar fixedBottom>
-        <button type="button" className="btn btn-info btn-lg" onClick={this.handleClick.bind(this)}>Add Recipe</button>
-        </Navbar>
+        <Footer />
       </div>
     );
   }

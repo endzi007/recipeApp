@@ -18,3 +18,25 @@ i {
   font-size: 30px;
   vertical-align: middle;
 }
+
+.jumbotron{
+  margin-top: 70px!important;
+}
+.navbar{
+  padding: 5px 0;
+}
+#footerNavbar{
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  h5{
+    a{
+      color: #5bc0de;
+      font-weight: bold;
+      text-decoration: underline;
+    }
+    i{
+      color: red;
+    }
+  }
+}

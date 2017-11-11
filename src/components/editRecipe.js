@@ -48,7 +48,7 @@ class EditRecipe extends Component {
     render(){
         return (
           <Modal show={this.props.showHide} onHide={this.close}>
-            <Modal.Header>Add new recipe</Modal.Header>
+            <Modal.Header>Edit recipe</Modal.Header>
             <Modal.Body>
               <AddEditForm  titleProp={this.state.title} recipeProp= {this.state.recipe} changeStateFromInput={this.changeStateFromInput.bind(this)}/>
             </Modal.Body>
